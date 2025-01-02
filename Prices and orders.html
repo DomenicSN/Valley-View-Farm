@@ -34,7 +34,7 @@
         }
 
         header h1 {
-            font-size: 2.5rem;
+            font-size: 2rem; /* Smaller font size for the header */
             font-weight: bold;
             margin-right: 30px;
         }
@@ -143,12 +143,21 @@
             box-sizing: border-box;
         }
 
-        .products-glance {
-            font-size: 2.5rem;
+        /* Swapped font styles for the comment and slogan */
+        .centered-comment {
+            font-size: 3rem;
             text-align: center;
             margin-top: 20px;
             font-weight: bold;
             color: #388E3C;
+        }
+
+        .slogan {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+            color: #4CAF50;
         }
 
         /* Price list adjustments */
@@ -214,6 +223,92 @@
         .update-section button:hover {
             background-color: #45a049;
         }
+
+        /* Styles for the updates list */
+        #userUpdatesList {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        #userUpdatesList li {
+            background-color: #f1f1f1;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .delete-update-btn {
+            background-color: #ff5722;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .delete-update-btn:hover {
+            background-color: #e64a19;
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #000;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* Media query for Landscape mode */
+        @media (max-width: 1024px) and (min-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            header h1 {
+                font-size: 1.5rem; /* Adjusting header font size */
+            }
+
+            .menu-toggle-container {
+                display: block;
+                margin-bottom: 15px;
+            }
+
+            .price-list-section {
+                padding-left: 20px;
+            }
+
+            .price-list-section h1 {
+                font-size: 1.8rem;
+            }
+
+            .centered-comment {
+                font-size: 2.5rem;
+            }
+
+            .slogan {
+                font-size: 2rem;
+            }
+        }
+
+        /* Media query for Portrait mode */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.2rem;
+            }
+
+            .centered-comment {
+                font-size: 2rem;
+            }
+
+            .slogan {
+                font-size: 1.5rem;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -229,7 +324,7 @@
             <a href="index.html">Home Page</a>
             <a href="products.html">Products Page</a>
             <a href="#about">About Us</a>
-            <a href="#PRICE LIST">Price list</a>
+            <a href="#products">Our Products</a>
             <!-- Admin Use button -->
             <button class="admin-use-btn" onclick="adminAccess()">Admin Use</button>
         </div>
@@ -238,11 +333,10 @@
 
 <section id="home" class="section">
     <div class="container">
-        <div class="products-glance">
-            Take a glance at a few of our Products
-        </div>
-		<div class="slogan">
-            You want it fresh, we got it fresh!
+        <!-- Swapped font styles for the comment and slogan -->
+        <p class="centered-comment">You want it fresh, we got it fresh!</p>
+        <div class="slogan">
+            Take a look at our affordable prices
         </div>
     </div>
 </section>
@@ -265,10 +359,20 @@
     </ul>
 </section>
 
+
 <section id="adminSection" class="update-section">
     <h2>Admin Update Area</h2>
     <textarea id="adminUpdate" placeholder="Enter update here..."></textarea><br>
     <button id="submitUpdate">Submit Update</button>
+</section>
+
+<section>
+    <h2>Latest Updates</h2>
+    <div class="container">
+        <ul id="userUpdatesList">
+            <!-- Updates will appear here -->
+        </ul>
+    </div>
 </section>
 
 <footer>
@@ -276,27 +380,69 @@
 </footer>
 
 <script>
+    let updates = JSON.parse(localStorage.getItem('updates')) || [];
+
     function toggleDrawer() {
         const drawer = document.getElementById('drawer');
         drawer.classList.toggle('active');
     }
 
-    // Admin Access Function
     function adminAccess() {
         const adminCode = prompt("Enter admin code:");
-        if (adminCode === "1234") { // Change the code to your preference
+        if (adminCode === "1234") {
             document.getElementById('adminSection').style.display = "block"; // Show admin section
         } else {
             alert("Incorrect code. Access denied.");
         }
     }
 
+    document.getElementById('submitUpdate').addEventListener('click', () => {
+        const updateText = document.getElementById('adminUpdate').value;
+        if (updateText) {
+            updates.push(updateText);
+            localStorage.setItem('updates', JSON.stringify(updates));
+            displayUpdates();
+            document.getElementById('adminUpdate').value = ''; // Clear the textarea
+        }
+    });
+
+    function displayUpdates() {
+        const updatesList = document.getElementById('userUpdatesList');
+        updatesList.innerHTML = '';
+        const isAdminSectionVisible = document.getElementById('adminSection').style.display === "block";
+
+        updates.forEach((update, index) => {
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `${update}`;
+
+            if (isAdminSectionVisible) {
+                const deleteButton = document.createElement('button');
+                deleteButton.classList.add('delete-update-btn');
+                deleteButton.textContent = 'Delete';
+                deleteButton.onclick = function() {
+                    deleteUpdate(index);
+                };
+                listItem.appendChild(deleteButton);
+            }
+
+            updatesList.appendChild(listItem);
+        });
+    }
+
+    function deleteUpdate(index) {
+        updates.splice(index, 1);
+        localStorage.setItem('updates', JSON.stringify(updates));
+        displayUpdates();
+    }
+
+    // Display updates on page load
+    displayUpdates();
+
     // Close the drawer if clicked outside
     document.addEventListener('click', function(event) {
         const drawer = document.getElementById('drawer');
         const menuToggleContainer = document.querySelector('.menu-toggle-container');
         
-        // Check if the click is outside the drawer and menu toggle
         if (!menuToggleContainer.contains(event.target) && !drawer.contains(event.target) && drawer.classList.contains('active')) {
             drawer.classList.remove('active');
         }
