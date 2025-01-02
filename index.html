@@ -34,7 +34,7 @@
         }
 
         header h1 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: bold;
             margin-right: 30px;
         }
@@ -263,18 +263,17 @@
 
         /* Contact Us Section */
         #contact ul.contact-list {
-			list-style-type: none;
-			display: flex;
-			justify-content: flex-start; /* Align items to the left */
-			margin-top: 20px;
-			padding: 0; /* Remove padding */
-		}
+            list-style-type: none;
+            display: flex;
+            justify-content: flex-start; /* Align items to the left */
+            margin-top: 20px;
+            padding: 0; /* Remove padding */
+        }
 
-		#contact ul.contact-list li {
-			margin-right: 20px; /* Add space between items */
-			padding: 0; /* Remove padding */
-		}
-
+        #contact ul.contact-list li {
+            margin-right: 20px; /* Add space between items */
+            padding: 0; /* Remove padding */
+        }
 
         #contact ul.contact-list a img {
             width: 40px;
@@ -307,6 +306,51 @@
             font-size: 1.2rem;
             color: #2C6E49;
             margin-bottom: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            #home h2 {
+                font-size: 2.5rem;
+            }
+
+            #home .slogan {
+                font-size: 1.4rem;
+            }
+
+            .section {
+                padding: 40px;
+            }
+
+            .drawer {
+                width: 200px;
+            }
+
+            .product-item {
+                padding: 15px;
+            }
+        }
+
+        @media (orientation: landscape) and (max-width: 1024px) {
+            .container {
+                padding: 15px;
+            }
+
+            .section {
+                padding: 40px;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+
+            #home img.farm-image {
+                width: 80%;
+            }
         }
 
     </style>
@@ -365,9 +409,9 @@
         <ul class="contact-list">
             <li><a href="tel:+27832546387"><img src="icons/phone icon.jpeg" alt="Phone Icon"></a></li>
             <li><a href="mailto:benjamin@ngwenyaforestry.co.za"><img src="icons/email icon.png" alt="Email Icon"></a></li>
-            <li><a href="https://facebook.com/ValleyViewFarm" target="_blank"><img src="icons/facebook icon.png" alt="Facebook Icon"></a></li>
+            <li><a href="https://facebook.com/https:/valley.view.farm.2025" target="_blank"><img src="icons/facebook icon.png" alt="Facebook Icon"></a></li>
             <li><a href="https://wa.me/+27832546387" target="_blank"><img src="icons/whatsapp icon.png" alt="WhatsApp Icon"></a></li>
-            <li><a href="https://instagram.com/valleyviewfarm" target="_blank"><img src="icons/instagram icon.png" alt="Instagram Icon"></a></li>
+            <li><a href="https://instagram.com/valley.view.farm.2025" target="_blank"><img src="icons/instagram icon.png" alt="Instagram Icon"></a></li>
         </ul>
 
         <h3>Our Location</h3>
