@@ -1,4 +1,11 @@
-/* General Reset */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valley View Farm</title>
+    <style>
+        /* General Reset */
         * {
             margin: 0;
             padding: 0;
@@ -289,3 +296,163 @@
             .section {
                 padding: 30px;
                 margin: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="menu-toggle-container" onclick="toggleDrawer()">
+        <button class="menu-toggle">&#9776;</button>
+        <span class="menu-text">Menu</span>
+    </div>
+    <h1>Valley View Farm</h1>
+    <nav class="drawer" id="drawer">
+        <div class="drawer-group">
+            <a href="index.html">Home Page</a>
+            <a href="Prices and orders.html">Prices Page</a>
+            <a href="#about">About Us</a>
+            <a href="#products">Our Products</a>
+        </div>
+    </nav>
+</header>
+
+<section id="home" class="section">
+    <div class="container">
+        <div class="products-glance">
+            Take a glance at a few of our Products
+        </div>
+        <div class="slogan">
+            You want it fresh, we got it fresh!
+        </div>
+    </div>
+</section>
+
+<section id="about" class="section">
+    <div class="container">
+        <h2>About Us</h2>
+        <p>At Valley View Farm, we take pride in cultivating fresh, high-quality crops and raising healthy poultry. Our farm focuses on growing a variety of seasonal vegetables and fruits, ensuring that our produce is always fresh and sustainable.</p>
+        <p>We also specialize in raising free-range chickens, providing you with fresh, organic eggs and poultry. Our commitment to animal welfare ensures that our chickens are raised in a natural, stress-free environment, producing eggs and meat that are healthy and full of flavor.</p>
+    </div>
+</section>
+
+<section id="products" class="section">
+    <div class="container">
+        <h2>Our Products</h2>
+        <div class="products-grid">
+            <!-- Products 1 to 7 -->
+            <div class="product-item" onclick="openLightbox('products/image1.jpg')">
+                <p>Organic Beetroot</p>
+                <img src="products/image1.jpg" alt="Farm chickens feeding on layers feed">
+            </div>
+            <div class="product-item" onclick="openLightbox('products/image2.jpg')">
+                <p>Fresh harvest Beetroot</p>
+                <img src="products/image2.jpg" alt="Clean chicken barn interior">
+            </div>
+            <div class="product-item" onclick="openLightbox('products/image3.jpg')">
+                <p>Organic Cabbage</p>
+                <img src="products/image3.jpg" alt="Organic cabbage in a farm">
+            </div>
+            <div class="product-item" onclick="openLightbox('products/image4.jpg')">
+                <p>Well-Irrigated Crops</p>
+                <img src="products/image4.jpg" alt="Well-irrigated crop field">
+            </div>
+            <div class="product-item" onclick="openLightbox('products/image5.jpg')">
+                <p>Farm land</p>
+                <img src="products/image5.jpg" alt="Clean barn with healthy animals">
+            </div>
+            <div class="product-item" onclick="openLightbox('products/image6.jpg')">
+                <p>Organic Crops</p>
+                <img src="products/image6.jpg" alt="A-grade farm eggs on display">
+            </div>
+            <div class="product-item" onclick="openLightbox('products/image7.jpg')">
+                <p>Farm Fresh Produce</p>
+                <img src="products/image7.jpg" alt="Fresh farm produce arranged neatly">
+            </div>
+            
+            <!-- Skip 8 -->
+
+            <!-- Products 9 to 17 -->
+            <div class="product-item" onclick="openLightbox('products/image9.jpg')">
+                <p>Fresh farm harvest</p>
+                <img src="products/image9.jpg" alt="Farmers market stand with fresh produce">
+            </div>
+            <div class="product-item" onclick="openLightbox('products/image10.jpg')">
+                <p>Free-Range Poultry</p>
+                <img src="products/image10.jpg" alt="Free-range poultry raised on farm">
+            </div>
+            <div class="product-item" onclick="openLightbox('products/image11.jpg')">
+                <p>Fresh Eggs layers</p>
+                <img src="products/image11.jpg" alt="Fresh eggs in cartons">
+            </div>
+            <div class="product-item" onclick="openLightbox('products/image12.jpg')">
+                <p>Free rage Chickens</p>
+                <img src="products/image12.jpg" alt="Freshly harvested vegetables from farm">
+            </div>
+            <div class="product-item" onclick="openLightbox('products/image13.jpg')">
+                <p>Chicken bun</p>
+                <img src="products/image13.jpg" alt="Ripe tomatoes growing on the vine">
+            </div>
+            <div class="product-item" onclick="openLightbox('products/image14.jpg')">
+                <p>A-Grade Eggs</p>
+                <img src="products/image14.jpg" alt="Herb garden with various herbs">
+            </div>
+            <div class="product-item" onclick="openLightbox('products/image15.jpg')">
+                <p>Chickens </p>
+                <img src="products/image15.jpg" alt="Newly hatched chickens in the barn">
+            </div>
+            <div class="product-item" onclick="openLightbox('products/image16.jpg')">
+                <p>Feeding layers</p>
+                <img src="products/image16.jpg" alt="Fruit trees with ripe fruit on the farm">
+            </div>
+            <div class="product-item" onclick="openLightbox('products/image17.jpg')">
+                <p>Chicken coup</p>
+                <img src="products/image17.jpg" alt="Beautiful sunset over the farm landscape">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Lightbox Modal -->
+<div class="lightbox" id="lightbox">
+    <img src="" alt="Enlarged product image">
+    <span class="lightbox-close" onclick="closeLightbox()">×</span>
+</div>
+
+<footer>
+    <p>© 2025 Valley View Farm. All Rights Reserved.</p>
+</footer>
+
+<script>
+    function toggleDrawer() {
+        const drawer = document.getElementById('drawer');
+        drawer.classList.toggle('active');
+    }
+
+    // Close the drawer if clicked outside
+    document.addEventListener('click', function(event) {
+        const drawer = document.getElementById('drawer');
+        const menuToggleContainer = document.querySelector('.menu-toggle-container');
+        
+        // Check if the click is outside the drawer and menu toggle
+        if (!menuToggleContainer.contains(event.target) && !drawer.contains(event.target) && drawer.classList.contains('active')) {
+            drawer.classList.remove('active');
+        }
+    });
+
+    function openLightbox(imageSrc) {
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = lightbox.querySelector('img');
+        lightboxImg.src = imageSrc;
+        lightbox.classList.add('active');
+    }
+
+    function closeLightbox() {
+        const lightbox = document.getElementById('lightbox');
+        lightbox.classList.remove('active');
+    }
+</script>
+
+</body>
+</html>
