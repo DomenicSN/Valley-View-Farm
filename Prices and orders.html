@@ -34,7 +34,7 @@
         }
 
         header h1 {
-            font-size: 2rem; /* Smaller font size for the header */
+            font-size: 2rem;
             font-weight: bold;
             margin-right: 30px;
         }
@@ -106,22 +106,6 @@
             margin-bottom: 10px;
         }
 
-        .admin-use-btn {
-            background-color: #ff5722;
-            color: white;
-            padding: 10px;
-            text-align: center;
-            cursor: pointer;
-            font-size: 1.2rem;
-            border: none;
-            margin-top: 20px;
-            border-radius: 8px;
-        }
-
-        .admin-use-btn:hover {
-            background-color: #e64a19;
-        }
-
         .section {
             padding: 60px;
             margin: 20px;
@@ -143,7 +127,6 @@
             box-sizing: border-box;
         }
 
-        /* Swapped font styles for the comment and slogan */
         .centered-comment {
             font-size: 3rem;
             text-align: center;
@@ -160,18 +143,16 @@
             color: #4CAF50;
         }
 
-        /* Price list container styling */
-.price-list-container {
-    background-color: #ffffff;
-    border-radius: 12px;
-    padding: 20px;
-    margin-top: 40px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    max-width: 97%; /* Reduced from 100% to make the container smaller */
-    margin-left: auto;
-    margin-right: auto; /* Centers the container */
-}
-
+        .price-list-container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 40px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            max-width: 97%;
+            margin-left: auto;
+            margin-right: auto;
+        }
 
         .price-list-section h1 {
             font-size: 2rem;
@@ -197,66 +178,6 @@
             margin-bottom: 5px;
         }
 
-        .update-section {
-            margin-top: 60px;
-            text-align: center;
-            display: none; /* Hidden by default */
-        }
-
-        .update-section textarea {
-            width: 80%;
-            height: 100px;
-            margin-bottom: 20px;
-            border: 2px solid #4CAF50;
-            border-radius: 8px;
-            padding: 10px;
-            font-size: 1rem;
-        }
-
-        .update-section button {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .update-section button:hover {
-            background-color: #45a049;
-        }
-
-        /* Styles for the updates list */
-        #userUpdatesList {
-            list-style-type: none;
-            padding: 0;
-            margin-top: 20px;
-        }
-
-        #userUpdatesList li {
-            background-color: #f1f1f1;
-            margin: 10px 0;
-            padding: 15px;
-            border-radius: 8px;
-        }
-
-        .delete-update-btn {
-            background-color: #ff5722;
-            color: white;
-            padding: 5px 10px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-left: 10px;
-        }
-
-        .delete-update-btn:hover {
-            background-color: #e64a19;
-        }
-
-        /* Footer Styling */
         footer {
             background-color: #000;
             color: white;
@@ -264,7 +185,6 @@
             padding: 20px 0;
         }
 
-        /* Media query for Landscape mode */
         @media (max-width: 1024px) and (min-width: 768px) {
             header {
                 flex-direction: column;
@@ -273,12 +193,7 @@
             }
 
             header h1 {
-                font-size: 1.5rem; /* Adjusting header font size */
-            }
-
-            .menu-toggle-container {
-                display: block;
-                margin-bottom: 15px;
+                font-size: 1.5rem;
             }
 
             .price-list-section {
@@ -298,7 +213,6 @@
             }
         }
 
-        /* Media query for Portrait mode */
         @media (max-width: 768px) {
             header h1 {
                 font-size: 1.2rem;
@@ -329,15 +243,12 @@
             <a href="products.html">Products Page</a>
             <a href="#about">About Us</a>
             <a href="#products">Our Products</a>
-            <!-- Admin Use button -->
-            <button class="admin-use-btn" onclick="adminAccess()">Admin Use</button>
         </div>
     </nav>
 </header>
 
 <section id="home" class="section">
     <div class="container">
-        <!-- Swapped font styles for the comment and slogan -->
         <p class="centered-comment">You want it fresh, we got it fresh!</p>
         <div class="slogan">
             Take a look at our affordable prices
@@ -365,89 +276,20 @@
     </div>
 </section>
 
-<section id="adminSection" class="update-section">
-    <h2>Admin Update Area</h2>
-    <textarea id="adminUpdate" placeholder="Enter update here..."></textarea><br>
-    <button id="submitUpdate">Submit Update</button>
-</section>
-
-<section>
-    <h2>Latest Updates</h2>
-    <div class="container">
-        <ul id="userUpdatesList">
-            <!-- Updates will appear here -->
-        </ul>
-    </div>
-</section>
-
 <footer>
-    <p>© 2025 Valley View Farm. All Rights Reserved.</p>
+    <p>&copy; 2025 Valley View Farm. All Rights Reserved.</p>
 </footer>
 
 <script>
-    let updates = JSON.parse(localStorage.getItem('updates')) || [];
-
     function toggleDrawer() {
         const drawer = document.getElementById('drawer');
         drawer.classList.toggle('active');
     }
 
-    function adminAccess() {
-        const adminCode = prompt("Enter admin code:");
-        if (adminCode === "1234") {
-            document.getElementById('adminSection').style.display = "block"; // Show admin section
-        } else {
-            alert("Incorrect code. Access denied.");
-        }
-    }
-
-    document.getElementById('submitUpdate').addEventListener('click', () => {
-        const updateText = document.getElementById('adminUpdate').value;
-        if (updateText) {
-            updates.push(updateText);
-            localStorage.setItem('updates', JSON.stringify(updates));
-            displayUpdates();
-            document.getElementById('adminUpdate').value = ''; // Clear the textarea
-        }
-    });
-
-    function displayUpdates() {
-        const updatesList = document.getElementById('userUpdatesList');
-        updatesList.innerHTML = '';
-        const isAdminSectionVisible = document.getElementById('adminSection').style.display === "block";
-
-        updates.forEach((update, index) => {
-            const listItem = document.createElement('li');
-            listItem.innerHTML = `${update}`;
-
-            if (isAdminSectionVisible) {
-                const deleteButton = document.createElement('button');
-                deleteButton.classList.add('delete-update-btn');
-                deleteButton.textContent = 'Delete';
-                deleteButton.onclick = function() {
-                    deleteUpdate(index);
-                };
-                listItem.appendChild(deleteButton);
-            }
-
-            updatesList.appendChild(listItem);
-        });
-    }
-
-    function deleteUpdate(index) {
-        updates.splice(index, 1);
-        localStorage.setItem('updates', JSON.stringify(updates));
-        displayUpdates();
-    }
-
-    // Display updates on page load
-    displayUpdates();
-
-    // Close the drawer if clicked outside
     document.addEventListener('click', function(event) {
         const drawer = document.getElementById('drawer');
         const menuToggleContainer = document.querySelector('.menu-toggle-container');
-        
+
         if (!menuToggleContainer.contains(event.target) && !drawer.contains(event.target)) {
             drawer.classList.remove('active');
         }
