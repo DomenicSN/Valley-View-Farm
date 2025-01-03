@@ -160,14 +160,18 @@
             color: #4CAF50;
         }
 
-        /* Price list adjustments */
-        .price-list-section {
-            margin-top: 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            padding-left: 60px;
-        }
+        /* Price list container styling */
+.price-list-container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 40px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    max-width: 97%; /* Reduced from 100% to make the container smaller */
+    margin-left: auto;
+    margin-right: auto; /* Centers the container */
+}
+
 
         .price-list-section h1 {
             font-size: 2rem;
@@ -341,24 +345,25 @@
     </div>
 </section>
 
-<section class="price-list-section">
-    <h1>PRICE LIST</h1>
-    <p>At Valley View Farm, we pride ourselves on providing high-quality products at the most affordable prices. Whether you're purchasing our fresh eggs, live poultry, or seasonal vegetables, you can trust you're getting the best value for your money.</p>
-    <ul id="priceList" class="price-list">
-        <li>Eggs 30 small - R65</li>
-        <li>Eggs 30 medium - R75</li>
-        <li>Eggs 30 large - R80</li>
-        <li>Eggs 60 small - R130</li>
-        <li>Eggs 60 medium - R150</li>
-        <li>Eggs 60 large - R160</li>
-        <li>Broiler live chicken - R85</li>
-        <li>Broiler slaughtered - R95</li>
-        <li>Roosters live - R150</li>
-        <li>Rooster slaughtered - R160</li>
-        <li>Vegetables available</li>
-    </ul>
+<section class="price-list-container">
+    <div class="price-list-section">
+        <h1>PRICE LIST</h1>
+        <p>At Valley View Farm, we pride ourselves on providing high-quality products at the most affordable prices. Whether you're purchasing our fresh eggs, live poultry, or seasonal vegetables, you can trust you're getting the best value for your money.</p>
+        <ul id="priceList" class="price-list">
+            <li>Eggs 30 small - R65</li>
+            <li>Eggs 30 medium - R75</li>
+            <li>Eggs 30 large - R80</li>
+            <li>Eggs 60 small - R130</li>
+            <li>Eggs 60 medium - R150</li>
+            <li>Eggs 60 large - R160</li>
+            <li>Broiler live chicken - R85</li>
+            <li>Broiler slaughtered - R95</li>
+            <li>Roosters live - R150</li>
+            <li>Rooster slaughtered - R160</li>
+            <li>Vegetables available</li>
+        </ul>
+    </div>
 </section>
-
 
 <section id="adminSection" class="update-section">
     <h2>Admin Update Area</h2>
@@ -443,7 +448,7 @@
         const drawer = document.getElementById('drawer');
         const menuToggleContainer = document.querySelector('.menu-toggle-container');
         
-        if (!menuToggleContainer.contains(event.target) && !drawer.contains(event.target) && drawer.classList.contains('active')) {
+        if (!menuToggleContainer.contains(event.target) && !drawer.contains(event.target)) {
             drawer.classList.remove('active');
         }
     });
