@@ -40,59 +40,64 @@
         }
 
         /* Hamburger Button Container */
-        .menu-toggle-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background-color: transparent;
-            cursor: pointer;
-            border: 2px solid white;
-            border-radius: 8px;
-            padding: 10px;
-            width: 60px;
-            height: 70px;
-        }
+		.menu-toggle-container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			background-color: transparent;
+			cursor: pointer;
+			border: 2px solid white;
+			border-radius: 8px;
+			padding: 8px; /* Reduced padding */
+			width: 50px; /* Reduced width */
+			height: 60px; /* Reduced height */
+			margin-right: 20px; /* Added space between menu and website name */
+		}
 
-        .menu-toggle {
-            font-size: 2.5rem;
-            color: white;
-            background-color: transparent;
-            border: none;
-        }
+		.menu-toggle {
+			font-size: 2rem; /* Reduced font size */
+			color: white;
+			background-color: transparent;
+			border: none;
+		}
 
-        .menu-text {
-            font-size: 1rem;
-            color: white;
-            margin-top: -5px;
-        }
+		.menu-text {
+			font-size: 0.8rem; /* Reduced font size */
+			color: white;
+			margin-top: -5px;
+		}
+
+		
 
         /* Navigation Drawer */
-        .drawer {
-            position: fixed;
-            top: 0;
-            left: -250px;
-            width: 250px;
-            height: 100%;
-            background-color: #333;
-            overflow-y: auto;
-            transition: left 0.3s ease;
-            padding-top: 60px;
-            z-index: 1000;
-        }
+		.drawer {
+			position: fixed;
+			top: 0;
+			left: -250px;
+			width: 200px;
+			height: 100%;
+			background-color: rgba(51, 51, 51, 0.9); /* Semi-transparent background */
+			overflow-y: auto;
+			transition: left 0.3s ease;
+			padding-top: 60px;
+			z-index: 1000;
+		}
 
-        .drawer a {
-            padding: 10px 15px;
-            text-decoration: none;
-            font-size: 1.5rem;
-            color: white;
-            display: block;
-            transition: background-color 0.3s ease;
-        }
+		.drawer a {
+			padding: 8px 12px; /* Smaller padding */
+			text-decoration: none;
+			font-size: 1.2rem; /* Smaller font size */
+			color: white;
+			display: block;
+			transition: background-color 0.3s ease, transform 0.3s ease;
+		}
 
-        .drawer a:hover {
-            background-color: #575757;
-        }
+		.drawer a:hover {
+			background-color: rgba(255, 255, 255, 0.2); /* Slight hover effect */
+			transform: scale(1.05); /* Slight zoom effect on hover */
+		}
+
 
         .drawer.active {
             left: 0;
@@ -391,12 +396,14 @@
     <div class="container">
         <h2>About Us</h2>
         <p>Welcome to Valley View Farm, your trusted source for fresh, high-quality agricultural products. Nestled in the heart of lush landscapes, we are dedicated to sustainable farming practices and delivering excellence to our community.</p>
-        <h3>Our Specialties</h3>
+        </br>
+		</br>
+		<h3>Our Specialties:</h3>
         <ul class="specialties-list">
-            <li><strong>Chicken Broilers:</strong> Premium-quality broilers raised to meet the highest standards of nutrition and taste.</li>
-            <li><strong>Chicken Roosters:</strong> Robust roosters nurtured for superior health and vitality.</li>
-            <li><strong>Vegetables:</strong> Fresh and nutrient-rich vegetables from farm to table.</li>
-            <li><strong>Eggs:</strong> Fresh eggs from healthy, free-range hens.</li>
+            <li><strong>* Chicken Broilers:</strong> Premium-quality broilers raised to meet the highest standards of nutrition and taste.</li>
+            <li><strong>* Chicken Roosters:</strong> Robust roosters nurtured for superior health and vitality.</li>
+            <li><strong>* Vegetables:</strong> Fresh and nutrient-rich vegetables from farm to table.</li>
+            <li><strong>* Eggs:</strong> Fresh eggs from healthy, free-range hens.</li>
         </ul>
     </div>
 </section>
